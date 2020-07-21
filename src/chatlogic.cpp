@@ -35,7 +35,7 @@ ChatLogic::~ChatLogic()
 
     // delete chatbot instance
     std::cout << "ChatLogic destructing chatBot" << std::endl;
-    // delete _chatBot;
+    delete _chatBot;
 
     // delete all nodes
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
