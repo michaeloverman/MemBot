@@ -6,7 +6,6 @@
 #include "chatlogic.h"
 #include "graphnode.h"
 #include "graphedge.h"
-#include "chatbot.h"
 
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
@@ -45,7 +44,53 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
-
+ChatBot::ChatBot(const ChatBot &source) {
+	std::cout << "ChatBot Copy Constructor" << std::endl;
+	_image = new wxBitmap();
+	*_image = *source._image;
+	_chatLogic = source._chatLogic;
+	_chatLogic -> SetChatbotHandle(this);
+	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
+}
+ChatBot &ChatBot::operator = (const ChatBot &source) {
+	std::cout << "ChatBot Copy Assignment Operator" << std::endl;
+	if (this == &source) return *this;
+	_image = new wxBitmap();
+	*_image = *source._image;
+	_chatLogic = source._chatLogic;
+	_chatLogic -> SetChatbotHandle(this);
+	_rootNode = source._rootNode;
+	_currentNode = source._currentNode;
+	return *this;
+}
+ChatBot::ChatBot(ChatBot &&source) {
+	std::cout << "ChatBot Move Constructor" << std::endl;
+	_image = new wxBitmap();
+	*_image = *source._image;
+	source._image = nullptr;
+	_chatLogic = source._chatLogic;
+	_chatLogic -> SetChatbotHandle(this);
+	source.SetChatLogicHandle(nullptr);
+	_rootNode = source._rootNode;
+	source.SetRootNode(nullptr);
+	_currentNode = source._currentNode;
+	source._currentNode = nullptr;
+}
+ChatBot &ChatBot::operator = (ChatBot &&source) {
+	std::cout << "ChatBot Move Assignment Operator" << std::endl;
+	_image = new wxBitmap();
+	*_image = *source._image;
+	source._image = nullptr;
+	_chatLogic = source._chatLogic;
+	_chatLogic -> SetChatbotHandle(this);
+	source.SetChatLogicHandle(nullptr);
+	_rootNode = source._rootNode;
+	source.SetRootNode(nullptr);
+	_currentNode = source._currentNode;
+	source._currentNode = nullptr;
+	return *this;
+}
 ////
 //// EOF STUDENT CODE
 
