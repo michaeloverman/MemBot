@@ -1,3 +1,5 @@
+I should have just copied this code into my local directory, but I cloned it. So now it looks like all the commits from Udacity are part of my project. Old commits = Udacit, new commits = me doing the project.
+
 # CPPND: Memory Management Chatbot
 
 This is the project for the third course in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213): Memory Management.
