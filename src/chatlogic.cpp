@@ -52,7 +52,7 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T 
 
 void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 {
-	std::cout << "LoadAnswerGraphFromFile : " << filename << std::endl;
+	// std::cout << "LoadAnswerGraphFromFile : " << filename << std::endl;
     // load file with answer graph elements
     std::ifstream file(filename);
 
@@ -109,17 +109,17 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
                         // check if node with this ID exists already
                         auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](const std::unique_ptr<GraphNode> &node) { return node->GetID() == id; });
-						std::cout << "newNode created: " << &newNode << std::endl;
+						// std::cout << "newNode created: " << &newNode << std::endl;
 
                         // create new element if ID does not yet exist
                         if (newNode == _nodes.end())
                         {
-							std::cout << "adding newNode to _nodes" << std::endl;
+							// std::cout << "adding newNode to _nodes" << std::endl;
                             _nodes.emplace_back(std::make_unique<GraphNode>(id));
                             newNode = _nodes.end() - 1; // get iterator to last element
 
                             // add all answers to current node
-							std::cout << "adding all tokens to element" << std::endl;
+							// std::cout << "adding all tokens to element" << std::endl;
                             AddAllTokensToElement("ANSWER", tokens, **newNode);
                         }
 
